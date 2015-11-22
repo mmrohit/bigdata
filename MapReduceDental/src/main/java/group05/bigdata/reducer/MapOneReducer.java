@@ -15,8 +15,10 @@ public class MapOneReducer extends Reducer <Text, FloatWritable, Text, FloatWrit
           
             // Calculate the avg premium of all the premiums
            for (FloatWritable value : values) {
-            	if(flag == 0)
+            	if(flag == 0){
             		avgStatePremium += value.get();
+            		flag++;
+            	}
             	else{
             		avgStatePremium += value.get();
             		avgStatePremium /= 2;

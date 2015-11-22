@@ -54,7 +54,7 @@ public class DentalDriver extends Configured implements Tool
 		//************* OUTPUT FILE CONFIGURATION *******************************************
 		job.setOutputFormatClass(TextOutputFormat.class); //DEFAULT NO NEED TO SPECIFY
 		// Set the output path of file. Timestamp embedding to prevent write failures on HDFS
-		FileOutputFormat.setOutputPath(job,new Path(arg0[1]+new SimpleDateFormat("yyyyMMddhhmm'.txt'").format(new Date())));
+		FileOutputFormat.setOutputPath(job,new Path("MapOneReducer"+arg0[1]+new SimpleDateFormat("MMddhhmm'.txt'").format(new Date())));
 		
 		//***********************************************************************************
 		
