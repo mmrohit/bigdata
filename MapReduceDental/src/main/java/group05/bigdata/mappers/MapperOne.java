@@ -6,7 +6,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 //                   Mapper<input key type, input value type, output key type, output value type>
-public class DentalPlanMapper extends  Mapper<LongWritable, Text, Text, FloatWritable> {
+public class MapperOne extends  Mapper<LongWritable, Text, Text, FloatWritable> {
 	
 	public void map(LongWritable offSet, Text record, Context context)
 			throws IOException, InterruptedException {

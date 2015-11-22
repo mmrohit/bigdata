@@ -38,7 +38,7 @@ public class DentalDriver extends Configured implements Tool
 		
 		//**************** MAPPER RELATED CODE ***************************
 		//Set the mapper class
-		job.setMapperClass(group05.bigdata.mappers.DentalPlanMapper.class);
+		job.setMapperClass(group05.bigdata.mappers.MapperOne.class);
 		//Set mapper  class output key type
 		job.setMapOutputKeyClass(Text.class);
 		//Set mapper  class output value type
@@ -46,7 +46,7 @@ public class DentalDriver extends Configured implements Tool
 		//****************************************************************
 		
 		//*************** REDUCER CONFIGURATION *****************************
-		job.setReducerClass(group05.bigdata.reducer.RecommendReducer.class);
+		job.setReducerClass(group05.bigdata.reducer.MapOneReducer.class);
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(FloatWritable.class);
 		//*******************************************************************

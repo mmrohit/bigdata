@@ -5,7 +5,7 @@ import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-public class RecommendReducer extends Reducer <Text, FloatWritable, Text, FloatWritable>{
+public class MapOneReducer extends Reducer <Text, FloatWritable, Text, FloatWritable>{
 	
 		public void reduce(Text key, Iterable<FloatWritable> values,
                 Context context) throws IOException, InterruptedException {
