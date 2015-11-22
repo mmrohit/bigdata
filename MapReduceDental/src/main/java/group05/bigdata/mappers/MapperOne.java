@@ -20,7 +20,7 @@ public class MapperOne extends  Mapper<LongWritable, Text, Text, FloatWritable> 
 		 * [4] Plan Type
 		 * [5] Avg Premium	
 		 */
-	    String planNameKey = columnValues[3].trim();      
+	    String planNameKey = columnValues[0].trim();      
 	    float avgPremiumValue = Float.parseFloat(columnValues[5].trim()); 
 	    context.write(new Text(planNameKey), new FloatWritable(avgPremiumValue));	
 	}

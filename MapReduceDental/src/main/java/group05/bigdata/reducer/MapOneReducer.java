@@ -10,13 +10,19 @@ public class MapOneReducer extends Reducer <Text, FloatWritable, Text, FloatWrit
 		public void reduce(Text key, Iterable<FloatWritable> values,
                 Context context) throws IOException, InterruptedException {
 			
-            float recomendationFactor = 0.0f;
+			float avgStatePremium = 0.0f;
+            int flag = 0;
           
-            // HERE WE CALCULATE ACTUAL Recommendation Factor
-      /*      for (FloatWritable value : values) {
-            	//recomendationFactor += value.get();
-            } */
-            context.write(key, new FloatWritable(recomendationFactor));
+            // Calculate the avg premium of all the premiums
+           for (FloatWritable value : values) {
+            	if(flag == 0)
+            		avgStatePremium += value.get();
+            	else{
+            		avgStatePremium += value.get();
+            		avgStatePremium /= 2;
+            	}
+            } 
+            context.write(key, new FloatWritable(avgStatePremium));
             // Key is Plan name, Value is the recommendation factor  
         }		
 }
