@@ -27,6 +27,7 @@ public class StateAvgPremDriver extends Configured implements Tool
 		//*********** Job Configuration here ********************************
 		Job job = Job.getInstance(getConf());
 		job.setJarByClass(getClass()); // Current class has map reduce configuration
+		job.setJobName("StateAvgPremiumJob");
 		//*******************************************************************
 		
 		//********** Input File Config *****************************
@@ -54,7 +55,7 @@ public class StateAvgPremDriver extends Configured implements Tool
 		//************* OUTPUT FILE CONFIGURATION *******************************************
 		job.setOutputFormatClass(TextOutputFormat.class); //DEFAULT NO NEED TO SPECIFY
 		// Set the output path of file. Timestamp embedding to prevent write failures on HDFS
-		FileOutputFormat.setOutputPath(job,new Path(arg0[1]+"MapperOne"+new SimpleDateFormat("MMddhhmm'.txt'").format(new Date())));
+		FileOutputFormat.setOutputPath(job,new Path(arg0[1]+"StateAveragePremium"+new SimpleDateFormat("MMddhhmm'.txt'").format(new Date())));
 		
 		//***********************************************************************************
 		
