@@ -7,7 +7,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 //                   Mapper<input key type, input value type, output key type, output value type>
-public class MapperOne extends  Mapper<LongWritable, Text, Text, FloatWritable> {
+public class StateAvgPremMapper extends  Mapper<LongWritable, Text, Text, FloatWritable> {
 	
 	public void map(LongWritable lineOffSet, Text record, Context context)
 			throws IOException, InterruptedException {

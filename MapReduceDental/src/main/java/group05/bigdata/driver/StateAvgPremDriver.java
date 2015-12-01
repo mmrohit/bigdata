@@ -14,11 +14,11 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-public class DentalDriver extends Configured implements Tool
+public class StateAvgPremDriver extends Configured implements Tool
 {
     public static void main( String[] args ) throws Exception
     {
-    	int code = ToolRunner.run(new DentalDriver(), args);
+    	int code = ToolRunner.run(new StateAvgPremDriver(), args);
         System.exit(code);
     }
 
@@ -38,7 +38,7 @@ public class DentalDriver extends Configured implements Tool
 		
 		//**************** MAPPER RELATED CODE ***************************
 		//Set the mapper class
-		job.setMapperClass(group05.bigdata.mappers.MapperOne.class);
+		job.setMapperClass(group05.bigdata.mappers.StateAvgPremMapper.class);
 		//Set mapper  class output key type
 		job.setMapOutputKeyClass(Text.class);
 		//Set mapper  class output value type
@@ -46,7 +46,7 @@ public class DentalDriver extends Configured implements Tool
 		//****************************************************************
 		
 		//*************** REDUCER CONFIGURATION *****************************
-		job.setReducerClass(group05.bigdata.reducer.MapOneReducer.class);
+		job.setReducerClass(group05.bigdata.reducer.StateAvgPremReducer.class);
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(FloatWritable.class);
 		//*******************************************************************
@@ -54,7 +54,7 @@ public class DentalDriver extends Configured implements Tool
 		//************* OUTPUT FILE CONFIGURATION *******************************************
 		job.setOutputFormatClass(TextOutputFormat.class); //DEFAULT NO NEED TO SPECIFY
 		// Set the output path of file. Timestamp embedding to prevent write failures on HDFS
-		FileOutputFormat.setOutputPath(job,new Path("MapOneReducer"+arg0[1]+new SimpleDateFormat("MMddhhmm'.txt'").format(new Date())));
+		FileOutputFormat.setOutputPath(job,new Path(arg0[1]+"MapperOne"+new SimpleDateFormat("MMddhhmm'.txt'").format(new Date())));
 		
 		//***********************************************************************************
 		
