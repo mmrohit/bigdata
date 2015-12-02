@@ -1,23 +1,17 @@
 package group05.bigdata.driver;
 
-import org.apache.hadoop.io.LongWritable;
-import org.apache.hadoop.util.ToolRunner;
+import java.io.IOException;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.mapreduce.Job;
 
 public class StatePopulationDriver extends DiverBase {
-
-	 public static void main( String[] args ) throws Exception
-	    {
-	    	int code = ToolRunner.run(new StatePopulationDriver(), args);
-	        System.exit(code);
-	    }
-	 StatePopulationDriver(){
+	 StatePopulationDriver() throws IOException{
+		    job = Job.getInstance(new Configuration());
 	    	job.setJobName("StatePopulationJob");
 			job.setMapperClass(group05.bigdata.mappers.StatePopulationMapper.class);
 			job.setReducerClass(group05.bigdata.reducer.StatePopulationReducer.class);
-			//Different for this map-reduce
-			job.setMapOutputValueClass(LongWritable.class);
-			job.setOutputValueClass(LongWritable.class);
 			//-------------
 			outputFileName = "StatePopulation";
+			i=2;
 	    }
 }

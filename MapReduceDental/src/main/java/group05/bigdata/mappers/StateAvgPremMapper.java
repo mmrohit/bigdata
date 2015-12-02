@@ -29,12 +29,11 @@ public class StateAvgPremMapper extends  Mapper<LongWritable, Text, Text, FloatW
 		String stateKey = columnValues[0].trim();      
 	    
 		try{
-		float avgPremiumValue = Float.parseFloat(columnValues[5].trim());
-		context.write(new Text(stateKey), new FloatWritable(avgPremiumValue));
+			float avgPremiumValue = Float.parseFloat(columnValues[5].trim());
+			context.write(new Text(stateKey), new FloatWritable(avgPremiumValue));
 		}
 		catch(NumberFormatException e){
 			return;
 		}
-	   
-		}
 	}
+}

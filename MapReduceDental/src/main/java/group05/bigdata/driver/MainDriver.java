@@ -1,8 +1,9 @@
 package group05.bigdata.driver;
 
+import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.util.ToolRunner;
 
-public class MainDriver {
+public class MainDriver extends Configured{
 	public static void main( String[] args ) throws Exception
     {
     	int code = ToolRunner.run(new PlanAvgPremDriver(), args);

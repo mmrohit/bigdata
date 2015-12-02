@@ -29,13 +29,11 @@ public class PlanAvgPremMapper extends  Mapper<LongWritable, Text, Text, FloatWr
 		String planNameKey = columnValues[3].trim();      
 	    
 		try{
-		float avgPremiumValue = Float.parseFloat(columnValues[5].trim());
-		context.write(new Text(planNameKey), new FloatWritable(avgPremiumValue));
+			float avgPremiumValue = Float.parseFloat(columnValues[5].trim());
+			context.write(new Text(planNameKey), new FloatWritable(avgPremiumValue));
 		}
 		catch(NumberFormatException e){
 			return;
-		}
-	   
-		}
-
+		}  
+	}
 }

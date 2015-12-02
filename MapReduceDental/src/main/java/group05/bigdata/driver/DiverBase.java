@@ -16,17 +16,19 @@ import org.apache.hadoop.util.Tool;
 public abstract class DiverBase extends Configured implements Tool{
 
 	Job job;
+	
 	String outputFileName;
+	//File path Argument
+	int i=0;
 	@Override
 	public int run(String[] arg0) throws Exception {
 		//*********** Job Configuration here ********************************
-		job = Job.getInstance(getConf());
+		//job = Job.getInstance(getConf());
 		job.setJarByClass(getClass()); // Current class has map reduce configuration
-		
 		//*******************************************************************
 		//********** Input File Config *****************************
 		//First set the path of input file which needs to be read
-		FileInputFormat.setInputPaths(job, new Path(arg0[0]));	
+		FileInputFormat.setInputPaths(job, new Path(arg0[i]));	
 		//Now set the input file format type
 		job.setInputFormatClass(TextInputFormat.class); //DEFAULT NO NEED TO SPECIFY
 		//***********************************************************
@@ -42,7 +44,7 @@ public abstract class DiverBase extends Configured implements Tool{
 		//*******************************************************************
 		//************* OUTPUT FILE CONFIGURATION *******************************************
 		job.setOutputFormatClass(TextOutputFormat.class); //DEFAULT NO NEED TO SPECIFY
-		FileOutputFormat.setOutputPath(job,new Path(arg0[1]+outputFileName+new SimpleDateFormat("MMddhhmm'.txt'").format(new Date())));
+		FileOutputFormat.setOutputPath(job,new Path(arg0[0]+outputFileName+new SimpleDateFormat("MMddhhmm'.txt'").format(new Date())));
 		//***********************************************************************************
 		// Return only after map-reduce completion
 		return job.waitForCompletion(true) ? 0 : 1;

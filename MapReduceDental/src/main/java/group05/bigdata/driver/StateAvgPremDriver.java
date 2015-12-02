@@ -1,13 +1,20 @@
 package group05.bigdata.driver;
 
+import java.io.IOException;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.mapreduce.Job;
+
 public class StateAvgPremDriver extends DiverBase
 {
     
-    StateAvgPremDriver(){
+    StateAvgPremDriver() throws IOException{
+    	job = Job.getInstance(new Configuration());
     	job.setJobName("StateAvgPremiumJob");
 		job.setMapperClass(group05.bigdata.mappers.StateAvgPremMapper.class);
 		job.setReducerClass(group05.bigdata.reducer.StateAvgPremReducer.class);
 		outputFileName = "StateAvgPrem";
+		i=1;
     }
 
 /*	public int run(String[] arg0) throws Exception {
