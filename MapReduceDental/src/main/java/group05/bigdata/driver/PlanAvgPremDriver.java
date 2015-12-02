@@ -17,5 +17,4 @@ public class PlanAvgPremDriver extends DiverBase {
 		// Set the output path of file. Timestamp embedding to prevent write failures on HDFS
 		outputFileName = "PlanAvgPrem";
 	}
-	
 }

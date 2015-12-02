@@ -1,14 +1,8 @@
 package group05.bigdata.driver;
 
-import org.apache.hadoop.util.ToolRunner;
-
 public class StateAvgPremDriver extends DiverBase
 {
-    public static void main( String[] args ) throws Exception
-    {
-    	int code = ToolRunner.run(new StateAvgPremDriver(), args);
-        System.exit(code);
-    }
+    
     StateAvgPremDriver(){
     	job.setJobName("StateAvgPremiumJob");
 		job.setMapperClass(group05.bigdata.mappers.StateAvgPremMapper.class);
