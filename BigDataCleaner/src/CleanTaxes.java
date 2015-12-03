@@ -22,9 +22,14 @@ public class CleanTaxes {
 				while ((line = br.readLine()) != null) {
 					if(lineIndex != 0){
 					String[] rowValues = line.split(cvsSplitBy);  // use comma as separator				
-					fw.append(rowValues[0].trim().toUpperCase()+","+ //STate
-							  rowValues[1].trim().toUpperCase().replace("%", "")+","+ // Base Tax
-							  rowValues[2].trim().toUpperCase().replace("%", "")+"\n");  //max Total Tax
+					fw.append(
+							
+							(rowValues[0].trim().indexOf('[') != -1 ?
+							rowValues[0].toUpperCase().subSequence(0, rowValues[0].trim().indexOf('[')).toString().trim()+"," :
+							rowValues[0].trim().toUpperCase()+",")+ //STate
+							
+							rowValues[1].trim().toUpperCase().replace("%", "")+","+ // Base Tax
+							rowValues[2].trim().toUpperCase().replace("%", "")+"\n");  //max Total Tax
 				}else{
 					//handle Headers
 					fw.append("STATE,BASE TAX(in %), TOTAL SURPLUS TAX(in %)\n");
